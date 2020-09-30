@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 import hashlib
@@ -14,9 +13,11 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-CurrentHash = 'INPUT HASH'
+CurrentHash = 'HASH'
 
 print(bcolors.OKBLUE + "[ 👟 ] Authentication Server 0.1" + bcolors.ENDC)
+API = input(bcolors.OKBLUE + "[ 👟 ] Insert API Key: " + bcolors.ENDC)
+print(bcolors.OKBLUE + "[ 👟 ] API Key: " + API + " Approved" + bcolors.ENDC)
 print(bcolors.OKGREEN + "[ ✅ ] Current approved SHA256 hash: " + bcolors.BOLD + bcolors.OKGREEN + CurrentHash + bcolors.ENDC)
 print(bcolors.OKBLUE + "[ 🔎 ] Obtaining hash.." + bcolors.ENDC)
 
@@ -32,6 +33,6 @@ if CurrentHash == readable_hash:
     print(bcolors.OKGREEN + bcolors.BOLD + "[ ✅ ] Server is up to date." + bcolors.ENDC)
 
 else:
-    print('Error')
+    print(bcolors.FAIL + "[ ❌ ] Error: Incorrect hash" + bcolors.ENDC)
 
 
