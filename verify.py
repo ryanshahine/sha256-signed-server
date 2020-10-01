@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import urllib.request
 
 import hashlib
 
@@ -13,7 +14,14 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-CurrentHash = 'HASH'
+
+url = "https://raw.githubusercontent.com/ryanshahine/sha256-signed-server/master/hash.txt"
+file = urllib.request.urlopen(url)
+
+for line in file:
+    CurrentHash = line.decode("utf-8").rstrip()
+
+
 
 print(bcolors.OKBLUE + "[ 👟 ] Authentication Server 0.1" + bcolors.ENDC)
 API = input(bcolors.OKBLUE + "[ 👟 ] Insert API Key: " + bcolors.ENDC)
@@ -24,7 +32,7 @@ print(bcolors.OKBLUE + "[ 🔎 ] Obtaining hash.." + bcolors.ENDC)
 
 # filename = input("Enter the input file name: ")
 # filename = server.py
-with open('server.py',"rb") as f:
+with open('verify.py',"rb") as f:
     bytes = f.read() # read entire file as bytes
     readable_hash = hashlib.sha256(bytes).hexdigest();
 print(bcolors.OKGREEN + "[ ✅ ] Successfully obtained SHA-256 hash: " + bcolors.BOLD + bcolors.OKGREEN + readable_hash)
@@ -34,5 +42,4 @@ if CurrentHash == readable_hash:
 
 else:
     print(bcolors.FAIL + "[ ❌ ] Error: Incorrect hash" + bcolors.ENDC)
-
 
