@@ -1,4 +1,6 @@
 # sha256-signed-server
-Sign server by SHA-256 Hash
+Verify source code by verify Github hash
 
-# Current approved hash:
+  - To do:
+  - Add commit hash to verification
+  
